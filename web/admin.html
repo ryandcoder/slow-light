@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Slow Light admin</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+<main class="admin">
+  <div class="admin-bar">
+    <h1>admin</h1>
+    <a class="text-link" href="index.html">&larr; Back to the album</a>
+  </div>
+  <p class="dim small" id="mode"></p>
+
+  <!-- Sign in -->
+  <section id="login">
+    <h2>Sign in</h2>
+    <form class="box" id="login-form">
+      <label class="field">
+        <span>Admin token</span>
+        <input type="password" id="token" autocomplete="current-password" required>
+      </label>
+      <div class="form-row"><span class="small dim">The ADMIN_TOKEN you set on Render.</span><button class="btn" type="submit">Unlock</button></div>
+      <p class="status small" id="login-status" role="status"></p>
+    </form>
+  </section>
+
+  <!-- Everything below is shown after signing in -->
+  <div id="tools" hidden>
+    <section>
+      <h2>Add photos</h2>
+      <form class="box" id="upload-form">
+        <label class="field">
+          <span>Photos (JPEG, PNG or WebP, up to 20 MB each)</span>
+          <input type="file" id="files" accept="image/jpeg,image/png,image/webp" multiple required>
+        </label>
+        <label class="field">
+          <span>Where should they appear?</span>
+          <select id="chapter">
+            <option value="strip">The film strip (chapter one)</option>
+            <option value="sheet" selected>All-time favourites (chapter two)</option>
+            <option value="cover">Cover photo (the newest one is used)</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Title (optional, one photo only)</span>
+          <input type="text" id="title" maxlength="120">
+        </label>
+        <label class="field">
+          <span>Caption (optional, one photo only)</span>
+          <textarea id="caption" rows="2" maxlength="500"></textarea>
+        </label>
+        <div class="form-row"><span class="small dim">With several photos, titles come from the file names.</span><button class="btn" type="submit" id="upload-btn">Upload</button></div>
+        <ul class="queue" id="queue" aria-live="polite"></ul>
+      </form>
+    </section>
+
+    <section>
+      <h2>Photos</h2>
+      <p class="small dim" id="photos-note"></p>
+      <div class="admin-list" id="photo-list"></div>
+    </section>
+
+    <section>
+      <h2>Latest comments</h2>
+      <div class="admin-list" id="comment-list"></div>
+    </section>
+  </div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="admin.js" defer></script>
+</body>
+</html>

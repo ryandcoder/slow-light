@@ -1,0 +1,23 @@
+# Render Blueprint: New > Blueprint > pick this repo.
+# It creates the PHP API as a Docker web service on the free plan.
+services:
+  - type: web
+    name: slow-light-api
+    runtime: docker
+    rootDir: api
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: STORAGE_BUCKET
+        value: photos
+      - key: IP_SALT
+        generateValue: true

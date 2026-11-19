@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slow Light: a photography album</title>
+<meta name="description" content="A quiet black-and-white photography album. Browse the frames, leave a like or a comment.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Slow Light">
+<meta property="og:description" content="A quiet black-and-white photography album.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.add("js")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="config.js"></script>
+</head>
+<body>
+
+<a class="skip" href="#strip">Skip to the photos</a>
+
+<header class="top" id="header">
+  <a class="brand" href="#top">Slow Light</a>
+  <nav class="nav" aria-label="Main">
+    <a class="nav-link" href="#strip" data-nav="strip">Frames</a>
+    <a class="nav-link" href="#sheet" data-nav="sheet">Favourites</a>
+    <a class="nav-link" href="#index">Index</a>
+    <a class="nav-link" href="#contact">Contact</a>
+  </nav>
+  <div class="progress" aria-hidden="true"></div>
+</header>
+
+<main>
+
+<!-- ============================================================ COVER -->
+<section id="top" class="hero">
+  <div class="hero-stage">
+    <div class="cover-wrap">
+      <div class="cover" id="cover">
+        <button class="cover-open" id="cover-open" type="button" aria-label="Open the cover photo" hidden></button>
+        <span class="chip" id="cover-chip">Cover photo &middot; 4:5</span>
+      </div>
+    </div>
+    <h1 class="hero-title"><span class="t-inner">slow light</span></h1>
+    <svg class="grain" aria-hidden="true" focusable="false">
+      <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"></feTurbulence><feColorMatrix type="saturate" values="0"></feColorMatrix></filter>
+      <rect width="100%" height="100%" filter="url(#grain)"></rect>
+    </svg>
+    <div class="hero-foot">
+      <span class="dim intro-fade">Photographs<br>2024&ndash;2026</span>
+      <a class="cue intro-cue" id="cue" href="#foreword" aria-label="Scroll down"><span>Scroll</span><span class="cue-line"></span></a>
+      <span class="dim right intro-fade">Vol. 01<br>Album</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================= FOREWORD -->
+<section id="foreword" class="foreword">
+  <p class="eyebrow reveal">Foreword</p>
+  <div class="lines">
+    <p class="line">some of these were made in the hour before sunrise.</p>
+    <p class="line">most were made alone.</p>
+    <p class="line">all of them are about waiting for the light.</p>
+  </div>
+</section>
+
+<!-- ======================================================= FILM STRIP -->
+<section id="strip" class="strip" style="--s: clamp(560px, 56vw, 780px)" hidden>
+  <div class="strip-stage">
+    <p class="strip-label"><span>Chapter one</span> &middot; <span data-count="strip">0</span> frames</p>
+    <div class="strip-track" id="strip-track">
+      <div class="strip-intro">
+        <p class="strip-intro-title">the harbour, the flats, the window.</p>
+        <p class="dim small">Keep scrolling. The frames slide past, one at a time. Tap any frame to open it, like it, or leave a note.</p>
+      </div>
+    </div>
+
+    <div class="strip-bar" id="strip-bar" aria-hidden="true"><i class="strip-fill"></i></div>
+    <div class="strip-ui">
+      <p class="strip-now" aria-live="polite"><span id="strip-n">01</span> / <span id="strip-total">00</span><span class="nm" id="strip-name"></span></p>
+      <div class="strip-ctl">
+        <button class="ctl" id="strip-prev" type="button" aria-label="Previous frame">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="ctl" id="strip-next" type="button" aria-label="Next frame">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== CONTACT SHEET -->
+<section id="sheet" class="sheet">
+  <div class="sec-head reveal">
+    <h2>all-time favourites</h2>
+    <p class="eyebrow dark">Chapter two &middot; <span data-count="sheet">0</span> frames</p>
+  </div>
+  <div class="sheet-grid" id="sheet-grid"></div>
+  <p class="state" id="state" role="status" hidden></p>
+</section>
+
+<!-- ============================================================= QUOTE -->
+<section class="band" aria-label="Quote">
+  <div class="drift"></div>
+  <p class="band-quote">some days the light never arrives. you take the picture anyway.</p>
+</section>
+
+<!-- ============================================================= INDEX -->
+<section id="index" class="index">
+  <div class="sec-head light reveal">
+    <h2>index</h2>
+    <p class="eyebrow">Three chapters</p>
+  </div>
+  <a class="row" href="#strip" data-row="strip">
+    <span class="row-num">01</span>
+    <span class="row-main">
+      <span class="row-title">the strip</span>
+      <span class="row-desc"><span data-count="strip">0</span> frames that slide past</span>
+    </span>
+    <span class="row-go">Open &rarr;</span>
+  </a>
+  <a class="row" href="#sheet" data-row="sheet">
+    <span class="row-num">02</span>
+    <span class="row-main">
+      <span class="row-title">all-time favourites</span>
+      <span class="row-desc"><span data-count="sheet">0</span> frames that stayed</span>
+    </span>
+    <span class="row-go">Open &rarr;</span>
+  </a>
+  <a class="row" href="#contact" data-row="contact">
+    <span class="row-num">03</span>
+    <span class="row-main">
+      <span class="row-title">contact sheet</span>
+      <span class="row-desc">where to find me</span>
+    </span>
+    <span class="row-go">Open &rarr;</span>
+  </a>
+</section>
+
+<!-- ============================================================ CLOSING -->
+<section class="closing" aria-label="Closing">
+  <p class="eyebrow dark">until the next roll</p>
+  <p class="spread">light.</p>
+</section>
+
+</main>
+
+<footer id="contact" class="foot">
+  <div class="sec-head light reveal">
+    <h2>contact sheet</h2>
+    <p class="eyebrow">Chapter three &middot; say hello</p>
+  </div>
+  <p class="foot-line reveal">for prints, commissions, or just to say hello.</p>
+
+  <ul class="contacts" id="contacts"></ul>
+
+  <div class="foot-row">
+    <span class="dim"><span id="owner">[Your name]</span> &middot; Slow Light &middot; Vol. 01 &middot; 2026</span>
+    <a class="text-link dim" href="admin.html">Admin</a>
+  </div>
+  <p class="foot-row small dim" id="demo-note" hidden>Demo mode: showing sample frames and sample contact details. Add your Supabase keys and contact details in config.js to go live.</p>
+</footer>
+
+<!-- ============================================================ LIGHTBOX -->
+<dialog id="lightbox" class="lb" aria-label="Photo viewer">
+  <div class="lb-inner">
+    <div class="lb-stage">
+      <img id="lb-img" alt="">
+      <button class="lb-btn lb-close" id="lb-close" type="button" aria-label="Close photo">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <button class="lb-btn lb-prev" id="lb-prev" type="button" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="lb-btn lb-next" id="lb-next" type="button" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <aside class="lb-panel">
+      <p class="eyebrow" id="lb-count"></p>
+      <h2 class="lb-title" id="lb-title"></h2>
+      <p class="lb-caption" id="lb-caption"></p>
+
+      <button class="act lb-like" id="lb-like" type="button" aria-pressed="false">
+        <span class="ico" data-icon="heart"></span>
+        <span><span id="lb-like-count">0</span> <span id="lb-like-label">likes</span></span>
+      </button>
+
+      <h3 class="lb-sub">Comments <span class="dim" id="lb-comment-count"></span></h3>
+      <ul class="comments" id="lb-comments" aria-live="polite"></ul>
+
+      <form class="comment-form" id="lb-form" novalidate>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="field">
+          <span>Name</span>
+          <input type="text" name="name" maxlength="40" required autocomplete="nickname">
+        </label>
+        <label class="field">
+          <span>Comment</span>
+          <textarea name="body" rows="3" maxlength="500" required></textarea>
+        </label>
+        <div class="form-row">
+          <span class="dim small" id="lb-chars">0 / 500</span>
+          <button class="btn" type="submit" id="lb-submit">Post comment</button>
+        </div>
+        <p class="status small" id="lb-status" role="status"></p>
+      </form>
+    </aside>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<noscript><p class="noscript">This album needs JavaScript to show its photos.</p></noscript>
+
+<script src="motion.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
